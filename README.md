@@ -1,4 +1,4 @@
-# Project Title
+# Checkers the Fun Game
 
 A brief description of what this project does and its purpose.
 
