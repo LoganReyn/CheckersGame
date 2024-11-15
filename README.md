@@ -1,6 +1,6 @@
 # Checkers the Fun Game
 
-A brief description of what this project does and its purpose.
+Simple Checkers game for ARTI 499 @ Ferris State University.
 
 ## Table of Contents
 
