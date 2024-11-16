@@ -49,7 +49,7 @@ def main():
         if not end:
             # logic updates
             theBoard = drawBasics.createBoard(myGame.board)
-            turnMessage = drawBasics.createText(f"{"Black" if myGame.turn else "White"}'s Turn", 30)
+            turnMessage = drawBasics.createText(f"{'Black' if myGame.turn else 'White'}'s Turn", 30)
 
 
             # Render        
