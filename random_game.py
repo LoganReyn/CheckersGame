@@ -5,8 +5,8 @@ import sys
 import Misc.constants as C
 import GameLogic.Environment as E
 import DrawLogic.drawBasics as drawBasics
-from DrawLogic import visualInput
-from GameLogic.LogicHelp import InvalidSelection, WhiteLost, BlackLost
+from GameLogic.LogicHelp import (WhiteLost, 
+                                 BlackLost)
 
 #####################################################
 # initilization of board 
@@ -22,7 +22,6 @@ myGame = E.Environment()
 
 def main():
 
-    selected_piece = None
     end = False
     end_message = ""
 
