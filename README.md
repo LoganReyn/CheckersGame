@@ -56,4 +56,4 @@ python random_game.py
 [![Gameplay Overview](https://img.youtube.com/vi/7wZ5xsW7RjA/0.jpg)](https://www.youtube.com/watch?v=7wZ5xsW7RjA)
 
 ### Random Game Simulation
-[![Gameplay Overview](https://img.youtube.com/vi/VIDEO_ID_1/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID_1)
+[![Gameplay Overview](https://img.youtube.com/vi/xpmO6uAdkto/0.jpg)](https://www.youtube.com/watch?v=xpmO6uAdkto)
