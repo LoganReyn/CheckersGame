@@ -1,5 +1,7 @@
 # Checkers the Fun Game
 
+![image](https://github.com/user-attachments/assets/da9a958c-5096-42e9-b8a8-0b2c7224c787)
+
 Simple Checkers game for ARTI 499 @ Ferris State University.
 
 ## Table of Contents
