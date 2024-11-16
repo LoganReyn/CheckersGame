@@ -1,4 +1,12 @@
-""" Drawn Screens to help draw. """
+""" 
+This module contains all screens in checkers game. 
+
+There are 4 possible screens. 
+    - start
+    - information
+    - game 
+    - end
+"""
 
 import pygame
 import sys
