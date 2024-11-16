@@ -1,6 +1,21 @@
+"""
+Contains _Board and Game class. 
+
+This is one of the most important modules 
+in the checkers game. 
+"""
+
 import random
-from GameLogic.PieceSquare import (Piece, Square)
-from GameLogic.LogicHelp import (InvalidSelection, MultiJump, WhiteLost, BlackLost, _checkType, _rowColGen, userChoice, _checkIndex)
+
+from GameLogic.PieceSquare import (Piece, 
+                                   Square)
+
+from GameLogic.LogicHelp import (InvalidSelection,
+                                WhiteLost, 
+                                BlackLost, 
+                                _checkType, 
+                                _rowColGen,
+                                _checkIndex)
 
 class _Board:
 
@@ -36,18 +51,10 @@ class _Board:
                 square.setOccupant(Piece(pieceId))
 
 class Game:
-    """ Controls Board State. """
+    """ Class that contains board state and manipulations.  """
 
     def __init__(self) -> None:
         self.board      = _Board("w", "b").getBoard()
-        self.selection  = None
-        self.moves      = None
-        self.turn       = False 
-        self.gameOver   = False
-    
-    def reset(self):
-        newBoard = _Board("w", "b")
-        self.board = newBoard.getBoard()
         self.selection  = None
         self.moves      = None
         self.turn       = False 
@@ -195,21 +202,13 @@ class Game:
         else:
             return tDict
 
-    # Currently working on move
     def _singleMove(self, playChoice:str, jmpsOnly=False) -> bool:
         """
         :param playChoice: playChoice could be leftUp, J.leftUp, . . .
         :return True: if a piece was jumped in the move
         :return False: if a move was to blank square 
         """
-        # # saftey Check
-        # if self.selection is None:
-        #     raise Exception
         myPiece = self.getPiece(self.selection)
-        # # safety Check 2
-        # if not isinstance(myPiece, Piece):
-        #     raise TypeError
-        
         if jmpsOnly:
             pieceMoves = self._pieceMove(self.selection, True)
         else:
@@ -304,28 +303,3 @@ class Game:
         True = Black
         """
         self.turn = not self.turn
-
-    def endGame(self):
-        self.gameOver = True
-
-
-
-        
-
-if __name__ == "__main__":
-    myG = Game()
-    print(myG.allMoves())
-
-    for row in myG.board:
-        print(row)
-
-    myG.choosePiece(myG.allMoves(), 0)
-    myG.turnLogic("rightDown")
-
-    for row in myG.board:
-        print(row)
-
-    myG.reset()
-
-    for row in myG.board:
-        print(row)

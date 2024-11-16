@@ -16,6 +16,3 @@ def getCords():
 def getSquare(env: E):
     col, row = getCords()
     env.getSquare(col, row)
-
-if __name__ == "__main__":
-    ...

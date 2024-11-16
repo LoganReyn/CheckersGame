@@ -1,4 +1,6 @@
-from GameLogic.LogicHelp import (WhiteLost, BlackLost, InvalidSelection, _checkIndex)
+from GameLogic.LogicHelp import (WhiteLost, 
+                                 BlackLost, 
+                                 InvalidSelection)
 from GameLogic.BoardGame import Game
 from ComputerPlayer.randbot import bot_moveSelect, bot_pieceSelect
 
