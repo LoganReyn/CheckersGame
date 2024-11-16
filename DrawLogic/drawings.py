@@ -169,7 +169,7 @@ def gameScreen(game: E.Environment, window):
             if not end:
                 # logic updates
                 theBoard = VDB.createBoard(game.board)
-                turnMessage = VDB.createText(f"{"Black" if game.turn else "White"}'s Turn", 30)
+                turnMessage = VDB.createText(f"{'Black' if game.turn else 'White'}'s Turn", 30)
 
                 # Render of Game Screen  
                 window.blit(VDB.createSquare(C.WHITE, C.WIDTH, C.HEIGHT), (0,0))
