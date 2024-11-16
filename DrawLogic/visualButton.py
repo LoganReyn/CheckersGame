@@ -1,9 +1,10 @@
 """ Button Class for Game Flow. """
 
+# NOTE: Consulted YouTube & ChatGPT for much of this logic.
+
 import pygame
 
 pygame.font.init()
-# author: ChatGPT
 
 class Button:
     """ Generic Button """
