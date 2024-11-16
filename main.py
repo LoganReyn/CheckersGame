@@ -1,7 +1,7 @@
 """
 Program Name: Checkers the Fun Game
 Author: Logan Reynolds
-Date: 11/09/2024
+Date: 11/16/2024
 Version: 1.0
 Description: 
         Play a game of checkers against a bot. 
@@ -15,12 +15,10 @@ from GameLogic import Environment as E
 from Misc import constants as C
 from Database import checkersData as D
 from DrawLogic import (drawBasics as VDB,
-                       drawings as SCREENS
-)
-
+                       drawings as SCREENS)
 
 #####################################################
-# Initilizations of main Window and Database 
+## Initilizations of main Window and Database 
 
 # Pygame Window
 pygame.init()
@@ -61,9 +59,7 @@ def main():
                 # didnt click reset button, show end screen 
                 if SCREENS.endScreen(myGame, WINDOW, option):
                     continue
-                
 
 
-                
 if __name__ == "__main__":
     main()

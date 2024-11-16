@@ -81,13 +81,3 @@ class WhiteLost(CheckersEvent):
     """ White has lost the game. """
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
-
-class MultiJump(CheckersEvent):
-    """ Multiple jumps available """
-    def __init__(self, *args: object) -> None:
-        super().__init__(*args)
-
-class Draw(CheckersEvent):
-    """ To many moves in a game"""
-    def __init__(self, *args: object) -> None:
-        super().__init__(*args)
