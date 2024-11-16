@@ -248,16 +248,13 @@ class Game:
         if self._singleMove(playChoice, keepOnlyJumps):
             validMoves = self._pieceMove(self.selection, True)
             if validMoves is None:
-                # self._changeTeam()
                 self.selection = None
                 return
             if len(validMoves) > 0: # check if multi jump 
                 possibleMoves = [keyString for keyString in validMoves.keys()]
                 userChoice = random.choice(possibleMoves)
-                if userChoice: #    
+                if userChoice: 
                     self.computerTurnLogic(userChoice, True)
-
-        # self._changeTeam()
         self.selection = None
 
     def checkLoss(self, movesDict: dict) -> None:
@@ -279,11 +276,7 @@ class Game:
             return None
     
     def checkPromotion(self):
-        """
-        If `Piece` is on last row opposite of starting side, promote to king.
-
-        :e.g.: "w" -> "W"
-        """
+        """ If `Piece` is on last row opposite of starting side, promote to king. """
         # check white row, check black row
         row = 0
         for _ in range(2):
@@ -297,9 +290,5 @@ class Game:
             row += 7
 
     def _changeTeam(self):
-        """
-        False = White
-
-        True = Black
-        """
+        """ White: False, Black: True """
         self.turn = not self.turn

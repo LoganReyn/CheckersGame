@@ -13,8 +13,8 @@ Simple Checkers game for ARTI 499 @ Ferris State University.
 
 ### Prerequisites
 
-- Python 3.x
-- Git (optional, for cloning the repository)
+- Python 3.12
+- pygame
 
 ### Step 1: Clone the Repository
 

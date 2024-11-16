@@ -1,9 +1,14 @@
-from GameLogic.LogicHelp import (WhiteLost, 
-                                 BlackLost, 
-                                 InvalidSelection)
-from GameLogic.BoardGame import Game
-from ComputerPlayer.randbot import bot_moveSelect, bot_pieceSelect
+""" 
+Environment class is a wrapper for the Game class.
 
+Originally intended for Reinforcement Learning. 
+Never worked out but kept the name 'Environment.'
+"""
+
+from GameLogic.LogicHelp import InvalidSelection
+from GameLogic.BoardGame import Game
+from ComputerPlayer.randbot import (bot_moveSelect, 
+                                    bot_pieceSelect)
 
 
 class Environment(Game):
@@ -23,30 +28,12 @@ class Environment(Game):
     def showTurn(self):
         print("Black" if self.turn else "White")
 
-    def terminal_step(self):
-        """ This is the human entry varient. """
-        # (1) check if team lost
-        # (2) choose piece from all pieces that can move
-        # (3) choose move from piece selected 
-        possibleMoves = self.allMoves()
-        self.checkLoss(possibleMoves)
-        self.showMoves(possibleMoves)
-        self.choosePiece(possibleMoves, int(input("choose piece int: ")))
-        self.showMoves(self._pieceMove(self.selection))
-        self.turnLogic(input("Movement Selection: "))
-
     def computer_step(self):
         possiblePieces = self.allMoves()
         self.checkLoss(possiblePieces)
         self.choosePiece(possiblePieces, bot_pieceSelect(possiblePieces))
         possibleDirections = self._pieceMove(self.selection)
         self.computerTurnLogic(bot_moveSelect(possibleDirections))
-
-    ###################################33
-
-
-
-
 
     def visual_select(self, cordsOfSelection: tuple[int, int]):
         """
@@ -55,7 +42,6 @@ class Environment(Game):
         raises Invalid Selection if requirments not met
         raises Index Error if selection off the board
         """
-
         try:
             mySqure = self.getSquare(cordsOfSelection)
             if mySqure.isOccupied():
@@ -75,8 +61,6 @@ class Environment(Game):
         except InvalidSelection:
             raise InvalidSelection("Wrong Team")
             
-
-    # Currently Working on 
     def visual_move(self, cordsOfSelection):
         # SHOULD BE: selection is set to cordinates of piece
         possibleMoves = self._pieceMove(self.selection)
@@ -90,8 +74,6 @@ class Environment(Game):
                 return
         else:
             raise InvalidSelection("Can't move there")
-
-
 
     def _visualSingleMove(self, cordsOfMove, jmpsOnly=False):
         
@@ -120,11 +102,6 @@ class Environment(Game):
                     self.visualTurnLogic(list(validMoves.values())[0], True)
 
         self.selection = None
-        # self._changeTeam()
-
-            
-
-    #############################################
 
     def choosePiece(self, allTheMoves, playChoice) -> None:
         """ Select `Piece` from moveable pieces. """
@@ -134,28 +111,9 @@ class Environment(Game):
             return None
         raise InvalidSelection(f"From moveable pieces, none selected -> {playChoice}")  
 
-
     def getGameState(self):
         return self.board
 
-        
-
-
-
 if __name__ == "__main__":
-    myEnv = Environment()
-    while (1):
-        try:
-            myEnv.showBoard()
-            myEnv.showTurn()
-            myEnv.human_step()
-
-        except WhiteLost:
-            print("White Lost")
-            break
-        except BlackLost:
-            print("Black Lost")
-            break
-
-        except Exception as e:
-            print(f"{str(e.__traceback__)}")
+    # tests below
+    ...
