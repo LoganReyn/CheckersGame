@@ -1,4 +1,17 @@
-""" Computer Player Functions """
+""" 
+Unmanned opponent for checkers game. 
+
+The unmanned should randomly selects a piece to 
+move. Then it should randomly select an available
+move that a piece has. If the piece can jump, then
+the opponent will choose jump everytime. 
+"""
+
+#################################################### 
+# attempted to use the doctest paradigm for testing 
+# >>> line of code
+# expected output
+#################################################### 
 
 import random   
 
