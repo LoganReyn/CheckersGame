@@ -1,0 +1,242 @@
+@startuml
+
+/'
+PlantUML code for Checkers the Fun Game
+
+    Author: Logan Reynolds
+    Date: November 16, 2024
+    Class: A.I. Capstone (ARTI 499)
+'/
+
+allowmixing
+
+package "GameLogic" {
+
+    class "Piece" {
+        id
+        + __str__()
+        + __repr__()
+        + getId()
+        + getTeam()
+        + setId()
+        + promote()
+        + isKing()
+        + moveLeUp()
+        + moveLeDn()
+        + move RiUp()
+        + move RiDn()
+        - __kingFilter()
+        - __boundryFilter()
+        + cardinalMoves()
+    }
+    
+    note right of GameLogic.Piece::cardinalMoves
+        This is a decorator for 
+        move*
+    end note
+
+
+    class "Square" {
+        cls: Piece | None
+        + __init__()
+        + __repr__()
+        + getOccupant()
+        + setOccupant()
+        + isOccupied()
+    }
+
+    class "_Board" {
+        __board
+        + __init__()
+        + getBoard()
+        + setBoard()
+        + populateBoard()
+        - __sequenceOne()
+        - __sequenceTwo()
+    }
+
+    class "Game" {
+        board
+        selection
+        moves
+        turn
+        gameOver
+        +getSquare()
+        +getPiece()
+        +generateAllSquares()
+        +generateAllPieces()
+        -_removePiece()
+        -_addPiece()
+        -_movesJumpLogic()
+        -_jumpedPiece()
+        -_movesCleanTeam()
+        -_pieceMove()
+        -_checkDictionaryKeys()
+        +allMoves()
+        +choosePiece()
+        -_jumpsOnlyFilter()
+        -_singleMove()
+        +turnLogic()
+        +computerTurnLogic()
+        +checkLoss()
+        +checkPromotion()
+        -_changeTeam()
+    }
+
+    class "Environment" {
+        +__init__()
+        +showBoard()
+        +showMoves()
+        +showTurn()
+        +computer_step()
+        +visual_select()
+        +visual_move()
+        -_visualSingleMove()
+        +visualTurnLogic()
+        +choosePiece()
+        +getGameState()
+    }
+
+    class "CheckersEvent" {
+            __init__()
+    }
+    class "InvalidSelection" {
+            __init__()
+    }
+    class "BlackLost" {
+            __init__()
+    }
+    class "WhiteLost" {
+            __init__()
+    }
+    _Board <|-- Game : inherits
+    Game <|-- Environment : inherits
+    _Board ..> Square : uses
+    Square <|.. Piece: contains
+
+
+    BaseException <|-- CheckersEvent : inherits
+    CheckersEvent <|-- InvalidSelection : inherits
+    CheckersEvent <|-- BlackLost : inherits
+    CheckersEvent <|-- WhiteLost : inherits
+}
+
+package "Database" {
+    class CheckersDB {
+        +__del__()
+        +filePath()
+        +connection()
+        -_connect()
+        +addRecord()
+        +queryAll()
+        -__filePath
+        -__connection
+        __init__()
+    }
+}
+
+package "ComputerPlayer" {
+    
+    interface randbot {
+        +bot_pieceSelect
+        +bot_moveSelect
+    }
+}
+
+package "DrawLogic" {    
+
+    interface "drawings" {
+        + startScreen
+        + informationScreen
+        + gameScreen
+        + endScreen
+    }
+
+    interface "drawBasics" {
+        +createSquare
+        +createCircle
+        +createText
+        +createBoard
+    }
+
+    interface "visualInput" {
+        +mousePosition
+        +getCords
+        +getSquare
+    }
+
+    class "Button" {
+        - text
+        - width
+        - height
+        - pos
+        - rect
+        - hovered
+        - textColor
+        - FONT
+        + HOVER_COLOR
+        + BACKGROUND_COLOR
+        
+        + __init__()
+        + draw()
+        + hovering()
+        + clicked()
+    }
+
+    class "InputBox" {
+        - rect
+        - color
+        - text
+        - txt_surface
+        - active
+        + INACTIVE
+        + ACTIVE
+        + FONT
+        
+        + __init__()
+        + entry()
+        + draw()
+    }    
+
+    drawings ..> Button: uses
+    drawings ..> InputBox: uses
+    drawings ..> visualInput: uses
+    drawings ..> drawBasics: uses
+}
+
+package "Misc" {
+    interface "startMusic" {
+        + startMusic
+    }
+
+    interface "constants" {
+        'nothing to write in here
+    }
+
+    component "Laughing_Love.mp3" <<file>>
+
+    note left of Misc.startMusic
+        Uses the mp3 file 
+    end note
+}
+
+' -- Draw Logic Relationships -- 
+    DrawLogic ..> ComputerPlayer: requires
+    DrawLogic ..> Misc: requires
+    DrawLogic ..> GameLogic: requires
+
+' main.py representation 
+    component "main" 
+        main ..> GameLogic
+        main ..> DrawLogic : uses
+        main ..> Misc : uses
+        main ..> Database : uses
+
+actor "Person" as person
+    person --> main: runs in terminal
+    note left of person 
+        - Has Virtual Environment in Python 3.11 or newer.
+        - Virtual Environment has PyGame installed.
+    end note
+
+@enduml
