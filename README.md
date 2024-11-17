@@ -63,5 +63,6 @@ python random_game.py
 The technical diagram illustrates the structure and relationships within the Checkers game codebase. 
 Created using PlantUML, the diagram highlights the main classes, methods, and their interactions, providing a somewhat 
 clear overview of the software architecture.
+
 ![image](https://github.com/user-attachments/assets/205fb0e5-4669-45d2-ac1d-1c124580560f)
 
