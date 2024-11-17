@@ -6,7 +6,7 @@ Simple Checkers game for ARTI 499 @ Ferris State University.
 
 - [Installation](#installation)
 - [Demonstrations](#demonstrations)
-- [Technical Diagram](#diagram)
+- [Technical Diagram](#technical-diagram)
 
 ## Installation
 
@@ -59,6 +59,6 @@ python random_game.py
 ### Random Game Simulation
 [![Gameplay Overview](https://img.youtube.com/vi/xpmO6uAdkto/0.jpg)](https://www.youtube.com/watch?v=xpmO6uAdkto)
 
-## Technical Diagram 
+## Technical-Diagram 
 ![image](https://github.com/user-attachments/assets/205fb0e5-4669-45d2-ac1d-1c124580560f)
 
